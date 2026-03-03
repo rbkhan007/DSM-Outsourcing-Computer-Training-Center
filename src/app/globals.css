@@ -1,0 +1,841 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Gold accent colors */
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-muted: var(--gold-muted);
+  
+  /* Matrix colors */
+  --color-matrix-primary: var(--matrix-primary);
+  --color-matrix-secondary: var(--matrix-secondary);
+  --color-matrix-glow: var(--matrix-glow);
+  
+  /* Sidebar */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  
+  /* Charts */
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  
+  /* Core */
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* ============================================
+   LIGHT THEME (DEFAULT)
+   ============================================ */
+:root {
+  --radius: 0.75rem;
+  
+  /* Matrix colors for light mode - subtle and elegant */
+  --matrix-primary: rgba(180, 140, 50, 0.12);
+  --matrix-secondary: rgba(212, 175, 55, 0.08);
+  --matrix-glow: rgba(212, 175, 55, 0.4);
+  --matrix-text: rgba(180, 140, 50, 0.35);
+  --matrix-bright: rgba(212, 175, 55, 0.9);
+  
+  /* Backgrounds - Clean warm whites */
+  --background: oklch(0.995 0.002 70);
+  --foreground: oklch(0.15 0.02 60);
+  
+  /* Cards and surfaces */
+  --card: oklch(0.99 0.002 70);
+  --card-foreground: oklch(0.15 0.02 60);
+  --popover: oklch(0.99 0.002 70);
+  --popover-foreground: oklch(0.15 0.02 60);
+  
+  /* Primary - Deep dark */
+  --primary: oklch(0.15 0.02 60);
+  --primary-foreground: oklch(0.99 0.002 70);
+  
+  /* Secondary */
+  --secondary: oklch(0.95 0.01 70);
+  --secondary-foreground: oklch(0.15 0.02 60);
+  
+  /* Muted */
+  --muted: oklch(0.96 0.01 70);
+  --muted-foreground: oklch(0.40 0.02 60);
+  
+  /* Accent - Gold */
+  --accent: oklch(0.78 0.16 70);
+  --accent-foreground: oklch(0.15 0.02 60);
+  
+  /* Destructive */
+  --destructive: oklch(0.55 0.22 25);
+  
+  /* Border and input */
+  --border: oklch(0.88 0.01 70);
+  --input: oklch(0.88 0.01 70);
+  --ring: oklch(0.78 0.16 70);
+  
+  /* Gold palette */
+  --gold: oklch(0.78 0.16 70);
+  --gold-light: oklch(0.88 0.12 75);
+  --gold-dark: oklch(0.62 0.18 65);
+  --gold-muted: oklch(0.85 0.08 70);
+  
+  /* Charts */
+  --chart-1: oklch(0.78 0.16 70);
+  --chart-2: oklch(0.65 0.18 65);
+  --chart-3: oklch(0.55 0.15 60);
+  --chart-4: oklch(0.45 0.12 55);
+  --chart-5: oklch(0.35 0.10 50);
+  
+  /* Sidebar */
+  --sidebar: oklch(0.99 0.002 70);
+  --sidebar-foreground: oklch(0.15 0.02 60);
+  --sidebar-primary: oklch(0.15 0.02 60);
+  --sidebar-primary-foreground: oklch(0.99 0.002 70);
+  --sidebar-accent: oklch(0.95 0.01 70);
+  --sidebar-accent-foreground: oklch(0.15 0.02 60);
+  --sidebar-border: oklch(0.88 0.01 70);
+  --sidebar-ring: oklch(0.78 0.16 70);
+}
+
+/* ============================================
+   DARK THEME
+   ============================================ */
+.dark {
+  /* Matrix colors for dark mode - vibrant and glowing */
+  --matrix-primary: rgba(212, 175, 55, 0.3);
+  --matrix-secondary: rgba(255, 215, 0, 0.2);
+  --matrix-glow: rgba(212, 175, 55, 0.6);
+  --matrix-text: rgba(212, 175, 55, 0.5);
+  --matrix-bright: rgba(255, 235, 150, 1);
+  
+  --background: oklch(0.08 0.02 60);
+  --foreground: oklch(0.98 0.002 60);
+  
+  --card: oklch(0.12 0.02 60);
+  --card-foreground: oklch(0.98 0.002 60);
+  --popover: oklch(0.12 0.02 60);
+  --popover-foreground: oklch(0.98 0.002 60);
+  
+  --primary: oklch(0.98 0.002 60);
+  --primary-foreground: oklch(0.08 0.02 60);
+  
+  --secondary: oklch(0.18 0.02 60);
+  --secondary-foreground: oklch(0.98 0.002 60);
+  
+  --muted: oklch(0.18 0.02 60);
+  --muted-foreground: oklch(0.65 0.02 60);
+  
+  --accent: oklch(0.78 0.16 70);
+  --accent-foreground: oklch(0.08 0.02 60);
+  
+  --destructive: oklch(0.60 0.22 25);
+  
+  --border: oklch(0.22 0.02 60);
+  --input: oklch(0.18 0.02 60);
+  --ring: oklch(0.78 0.16 70);
+  
+  /* Gold palette - slightly adjusted for dark mode */
+  --gold: oklch(0.80 0.16 70);
+  --gold-light: oklch(0.88 0.12 75);
+  --gold-dark: oklch(0.68 0.18 65);
+  --gold-muted: oklch(0.75 0.10 70);
+  
+  --chart-1: oklch(0.80 0.16 70);
+  --chart-2: oklch(0.68 0.18 65);
+  --chart-3: oklch(0.58 0.15 60);
+  --chart-4: oklch(0.48 0.12 55);
+  --chart-5: oklch(0.38 0.10 50);
+  
+  --sidebar: oklch(0.10 0.02 60);
+  --sidebar-foreground: oklch(0.98 0.002 60);
+  --sidebar-primary: oklch(0.80 0.16 70);
+  --sidebar-primary-foreground: oklch(0.08 0.02 60);
+  --sidebar-accent: oklch(0.18 0.02 60);
+  --sidebar-accent-foreground: oklch(0.98 0.002 60);
+  --sidebar-border: oklch(0.22 0.02 60);
+  --sidebar-ring: oklch(0.80 0.16 70);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ============================================
+   MATRIX RAIN BACKGROUND - PURE CSS
+   ============================================ */
+
+/* Matrix Background Container */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Matrix Rain Columns */
+.matrix-column {
+  position: absolute;
+  top: -100%;
+  font-family: 'Courier New', 'SF Mono', 'Fira Code', monospace;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
+  animation: matrix-fall linear infinite;
+  opacity: 0;
+}
+
+/* Light mode matrix styling */
+:root .matrix-column {
+  color: var(--matrix-text);
+  text-shadow: 
+    0 0 5px var(--matrix-primary),
+    0 0 10px var(--matrix-secondary);
+}
+
+/* Dark mode matrix styling - more vibrant */
+.dark .matrix-column {
+  color: var(--gold-muted);
+  text-shadow: 
+    0 0 8px var(--matrix-primary),
+    0 0 15px var(--matrix-secondary),
+    0 0 25px var(--matrix-glow);
+}
+
+/* Matrix falling animation */
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100%));
+    opacity: 0;
+  }
+}
+
+/* Matrix character glow effect */
+.matrix-char {
+  display: inline-block;
+  animation: matrix-glow 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes matrix-glow {
+  0% {
+    opacity: 0.4;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0.3px);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+}
+
+/* Matrix bright spot (leading character) */
+.matrix-bright {
+  animation: matrix-bright-pulse 0.4s ease-in-out infinite;
+}
+
+/* Light mode bright character */
+:root .matrix-bright {
+  color: var(--gold);
+  text-shadow: 
+    0 0 10px var(--gold),
+    0 0 20px var(--matrix-glow),
+    0 0 30px var(--matrix-primary);
+}
+
+/* Dark mode bright character */
+.dark .matrix-bright {
+  color: #fff;
+  text-shadow: 
+    0 0 10px var(--gold),
+    0 0 20px var(--gold),
+    0 0 40px var(--gold),
+    0 0 60px var(--matrix-glow);
+}
+
+@keyframes matrix-bright-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+
+/* Gradient overlay for depth */
+.matrix-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Light mode overlay */
+:root .matrix-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+}
+
+/* Dark mode overlay */
+.dark .matrix-overlay {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+}
+
+/* ============================================
+   MATRIX BACKGROUND WRAPPER
+   ============================================ */
+
+.matrix-background-wrapper {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   PURE CSS MATRIX ANIMATION FALLBACK
+   ============================================ */
+
+/* Animated background pattern using CSS gradients */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Light mode background pattern */
+:root body::before {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(180, 140, 50, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(200, 160, 55, 0.04) 0%, transparent 70%);
+  animation: background-pulse-light 8s ease-in-out infinite;
+}
+
+/* Dark mode background pattern */
+.dark body::before {
+  background: 
+    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  animation: background-pulse-dark 8s ease-in-out infinite;
+}
+
+@keyframes background-pulse-light {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes background-pulse-dark {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* ============================================
+   CUSTOM ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { box-shadow: 0 0 20px 10px rgba(212, 175, 55, 0.1); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Digital glitch effect */
+@keyframes glitch {
+  0%, 90%, 100% {
+    transform: translate(0);
+    filter: none;
+  }
+  92% {
+    transform: translate(-2px, 1px);
+    filter: hue-rotate(90deg);
+  }
+  94% {
+    transform: translate(2px, -1px);
+    filter: hue-rotate(-90deg);
+  }
+  96% {
+    transform: translate(-1px, 2px);
+    filter: hue-rotate(45deg);
+  }
+  98% {
+    transform: translate(1px, -2px);
+    filter: hue-rotate(-45deg);
+  }
+}
+
+/* Matrix digital rain sweep */
+@keyframes matrix-sweep {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.animate-glitch {
+  animation: glitch 5s ease-in-out infinite;
+}
+
+/* ============================================
+   GLASSMORPHISM UTILITIES
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-gold {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 215, 0, 0.06));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.dark .glass-gold {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(255, 215, 0, 0.08));
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* ============================================
+   GOLD TEXT & BORDER EFFECTS
+   ============================================ */
+
+/* Gold text gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold text with glow */
+.text-gold-glow {
+  color: var(--gold);
+  text-shadow: 0 0 10px var(--matrix-glow), 0 0 20px var(--matrix-secondary);
+}
+
+/* Gold border glow */
+.border-gold-glow {
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* Matrix-style scrollbar for dark mode */
+.dark::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+  box-shadow: 0 0 10px var(--matrix-glow);
+}
+
+/* ============================================
+   FOCUS & INTERACTIVE STATES
+   ============================================ */
+
+/* Focus ring for gold theme */
+.focus-gold:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  box-shadow: 0 0 15px var(--matrix-glow);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-muted), transparent);
+}
+
+/* Matrix-style divider */
+.matrix-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    var(--gold-dark) 20%,
+    var(--gold) 50%,
+    var(--gold-dark) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px var(--matrix-glow);
+  animation: pulse-gold 3s ease-in-out infinite;
+}
+
+/* ============================================
+   CARD HOVER EFFECTS
+   ============================================ */
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.1);
+}
+
+/* Matrix card effect */
+.card-matrix {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-matrix::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.card-matrix:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   CYBER/GOLD SCANLINES
+   ============================================ */
+
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(212, 175, 55, 0.02) 1px,
+    rgba(212, 175, 55, 0.02) 2px
+  );
+  pointer-events: none;
+  animation: scanline-move 8s linear infinite;
+}
+
+.dark .scanlines::after {
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(212, 175, 55, 0.04) 1px,
+    rgba(212, 175, 55, 0.04) 2px
+  );
+}
+
+@keyframes scanline-move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* ============================================
+   DIGITAL CORNER DECORATIONS
+   ============================================ */
+
+.corner-decoration {
+  position: relative;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--gold);
+  opacity: 0.5;
+}
+
+.corner-decoration::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-decoration::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .matrix-column {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .matrix-column,
+  .matrix-char,
+  .matrix-bright,
+  .scanlines::after,
+  body::before {
+    animation: none;
+  }
+}
+
+/* ============================================
+   FONT VISIBILITY ENHANCEMENTS
+   ============================================ */
+
+/* Ensure text is always readable */
+.text-foreground,
+.text-card-foreground,
+.text-primary,
+.text-secondary-foreground {
+  text-shadow: none;
+}
+
+/* Light mode text shadows for better contrast */
+:root .text-muted-foreground {
+  color: oklch(0.40 0.02 60);
+}
+
+.dark .text-muted-foreground {
+  color: oklch(0.65 0.02 60);
+}
+
+/* High contrast for important text */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+:root h1, :root h2, :root h3 {
+  color: oklch(0.12 0.02 60);
+}
+
+.dark h1, .dark h2, .dark h3 {
+  color: oklch(0.98 0.002 60);
+}
+
+/* Card content visibility */
+:root .card {
+  background: oklch(0.995 0.002 70);
+  border-color: oklch(0.85 0.01 70);
+}
+
+.dark .card {
+  background: oklch(0.12 0.02 60);
+  border-color: oklch(0.22 0.02 60);
+}
+
+/* Button visibility */
+:root .btn-primary,
+:root button[class*="bg-"] {
+  text-shadow: none;
+}
+
+/* Input fields - ensure good contrast */
+:root input,
+:root textarea,
+:root select {
+  background: oklch(0.99 0.002 70);
+  border-color: oklch(0.85 0.01 70);
+  color: oklch(0.15 0.02 60);
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  background: oklch(0.14 0.02 60);
+  border-color: oklch(0.28 0.02 60);
+  color: oklch(0.98 0.002 60);
+}
+
+/* Ensure placeholders are visible */
+:root input::placeholder,
+:root textarea::placeholder {
+  color: oklch(0.50 0.02 60);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: oklch(0.55 0.02 60);
+}
